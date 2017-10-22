@@ -39,6 +39,5 @@ public class Especial extends Conta{
     
     public void renderBonus(){
         super.setSaldo(super.getSaldo() + this.bonus);
-        this.bonus = 0;
     }
 }
