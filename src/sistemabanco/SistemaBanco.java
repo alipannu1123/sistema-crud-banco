@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class SistemaBanco {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SaldoNegativoException {
         Scanner scan = new Scanner(System.in);
         
         Banco banco = new Banco();
@@ -113,13 +113,15 @@ public class SistemaBanco {
                         System.out.print("número: ");
                         numero = scan.next();
                         ca = banco.consulta(numero);
+                        System.out.println("----------------------------");
                         System.out.println("número da conta: " + ca.getNumero());
                         System.out.println("saldo: " + ca.getSaldo());
-                        System.out.println("");
                         if(ca instanceof Especial){
                             System.out.println("bônus: " + ((Especial) ca).getBonus());
-                            System.out.println("");
                         }
+                        System.out.println("----------------------------");
+                        System.out.println("Consulta realizada com sucesso!");
+                        System.out.println("");
                     } catch (VetorVazioException|ContaAbstrataNaoEncontradaException e) {
                         System.out.println("");
                         System.out.println("exceção: " + e.getMessage());
@@ -129,15 +131,17 @@ public class SistemaBanco {
                 case 6:
                     try {
                         System.out.println("");
+                        System.out.println("----------------------------");
                         cas = banco.listar();
                         for (int i = 0; i < cas.size(); i++) {
                             System.out.println("número: " + cas.get(i).getNumero());
                             System.out.println("saldo: " + cas.get(i).getSaldo());
                             if(cas.get(i) instanceof Especial){
                                 System.out.println("bônus: " + ((Especial)cas.get(i)).getBonus());
-                                System.out.println("");
                             }
+                            System.out.println("----------------------------");
                         }
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (VetorVazioException e) {
                         System.out.println("");
                         System.out.println("exceção: " + e.getMessage());
@@ -150,7 +154,8 @@ public class SistemaBanco {
                         System.out.print("número: ");
                         numero = scan.next();
                         banco.remover(numero);
-                        System.out.println("");
+                        System.out.println("----------------------------");
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (VetorVazioException|ContaAbstrataNaoEncontradaException e) {
                         System.out.println("");
                         System.out.println("exceção: " + e.getMessage());
@@ -168,7 +173,8 @@ public class SistemaBanco {
                         saldo = scan.nextDouble();
 
                         banco.tranferir(origem, destino, saldo);
-                        System.out.println("");
+                        System.out.println("----------------------------");
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (VetorVazioException|ValorNegativoException|SaldoNegativoException|ContaAbstrataNaoEncontradaException e) {
                         System.out.println("");
                         System.out.println("exceção: " + e.getMessage());
@@ -184,6 +190,8 @@ public class SistemaBanco {
                         saldo = scan.nextDouble();
                         banco.creditar(numero, saldo);
                         System.out.println("");
+                        System.out.println("----------------------------");
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (ValorNegativoException|VetorVazioException|ContaAbstrataNaoEncontradaException e) {
                         System.out.println("");
                         System.out.println("exceção: " + e.getMessage());
@@ -197,8 +205,9 @@ public class SistemaBanco {
                         numero = scan.next();
                         System.out.print("quantia: ");
                         saldo = scan.nextDouble();
-                        banco.creditar(numero, saldo);
-                        System.out.println("");
+                        banco.debitar(numero, saldo);
+                        System.out.println("----------------------------");
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (ValorNegativoException|VetorVazioException|ContaAbstrataNaoEncontradaException e) {
                         System.out.println("");
                         System.out.println("exceção: " + e.getMessage());
@@ -211,7 +220,8 @@ public class SistemaBanco {
                         System.out.print("número: ");
                         numero = scan.next();
                         banco.renderJuros(numero);
-                        System.out.println("");
+                        System.out.println("----------------------------");
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (VetorVazioException|ContaAbstrataNaoEncontradaException|NaoEhContaPoupancaException e) {
                        System.out.println("");
                        System.out.println("exceção: " + e.getMessage());
@@ -224,7 +234,8 @@ public class SistemaBanco {
                         System.out.print("número: ");
                         numero = scan.next();
                         banco.renderBonus(numero);
-                        System.out.println("");
+                        System.out.println("----------------------------");
+                        System.out.println("Operação realizada com sucesso!");
                     } catch (VetorVazioException|ContaAbstrataNaoEncontradaException|NaoEhContaEspecialException e) {
                        System.out.println("");
                        System.out.println("exceção: " + e.getMessage());

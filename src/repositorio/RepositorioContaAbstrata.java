@@ -26,7 +26,11 @@ public class RepositorioContaAbstrata implements Repositorio{
 
     @Override
     public ArrayList<ContaAbstrata> listar() throws VetorVazioException {
-        return this.contaAbstrata;
+        if(this.contaAbstrata.size() > 0){
+            return this.contaAbstrata;
+        }else{
+            throw new VetorVazioException();
+        }
     }
 
     @Override
