@@ -20,6 +20,4 @@
  - Adicione sua correção ou implementação.
  - Me envie um pull request [GitHub](https://github.com/henriquenasc/sistema-crud-banco).
 
-Você poderar ver a evolução desse projeto de estudos [aqui](https://github.com/henriquenasc/bank-system).
-
 **Bons estudos :D**
